@@ -10,7 +10,12 @@ const BodyComponent = ()=>{
     // we use hooks to make it super powerful
     // React Hook -> Normal js function but has some power 
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
-    
+    const [filteredListOfRestaurants,setFilteredListOfRestaurants] = useState([]);
+
+    const [searchText, setSearchText] = useState("");
+    // whenever state variable updates, react triggers a reconciliation cycle(re-renders the component)
+    // console.log("body rendered");
+
     useEffect(()=>{
         fetchData();
     },[]);
@@ -23,19 +28,31 @@ const BodyComponent = ()=>{
         
         //optional chaining
         setListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
-    if(listOfRestaurants.length === 0){
-        return <Shimmer />
-    }
     
-
-  
-    return (
+    // Conditional Rendering
+    return listOfRestaurants.length === 0 ? (<Shimmer />): (
         <div className="body">
-            {/* <div className="search">Search</div> */}
-            <div className="filer">
-                <button className="filer-btn" onClick={()=>{
+            <div className="filter">
+                <div className="search">
+                    <input type="text" className="search-box" 
+                    value={searchText} 
+                    onChange={(e)=>{
+                        setSearchText(e.target.value)
+                    }}/>
+                    <button className="search-btn" onClick={()=>{
+                        // filter the restaurants cards and update the UI.
+                        // searchText 
+                        const filteredList = listOfRestaurants.filter((res)=>{
+                            return (res.info?.name).toLowerCase().includes(searchText.toLowerCase());
+                        })
+                        setFilteredListOfRestaurants(filteredList)
+                        console.log(searchText);
+                    }}>Search</button>
+                </div>
+                <button className="filter-btn" onClick={()=>{
                     const filteredList = listOfRestaurants.filter((data)=>{
                         return data.info.avgRating  > 4;
                     })
@@ -45,7 +62,7 @@ const BodyComponent = ()=>{
             <div className="res-container">
                 {
                     // for loop is not valid 
-                    listOfRestaurants.map(restaurant => <RestaurantCardComponent key={restaurant.info.id} resData={restaurant}/>)
+                    filteredListOfRestaurants.map(restaurant => <RestaurantCardComponent key={restaurant.info.id} resData={restaurant}/>)
                 }
             </div>
 

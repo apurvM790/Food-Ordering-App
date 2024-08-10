@@ -178,5 +178,13 @@ it follows the single responsibility principle where each and every service has 
             (skeleton)
     this 2nd approach gives a better user experience.
 
-# hello to the world
+# whenever state variable updates, react triggers a reconciliation cycle(re-renders the component).
 
+
+# 2 types of Routing in Web Apps :
+# -{[Single Page Application]} Client Side Routing - in this we are not making any network calls these components are already are loaded into the app and it replaces the one another. 
+
+# <Link></Link> this will be used for routing to different paths or components.
+
+- Server Side Routing - you make a call to the about us html page and it will come as a response.
+# <a></a> this will be used for routing to different whole html page.

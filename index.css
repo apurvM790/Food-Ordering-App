@@ -49,8 +49,9 @@
     flex-wrap: wrap;
 }
 
-.filer-btn{
+.filter-btn{
     margin: 10px;
+    /* display: flex; */
 }
 
 .shimmer-container{
@@ -79,4 +80,21 @@ to {
     animation: shimmer-card 1.5s linear infinite;
     background: linear-gradient(to right, transparent 0%, rgba(95, 94, 94, 0.1) 25%,  transparent 50%);
     background-size: 200% 100%;
+}
+
+.btn-Name{
+    cursor:pointer;
+    width: 70px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 10px;
+    background-color: lightsteelblue;
+    box-shadow:5px 5px 10px inset rgb(44, 43, 43);
+}
+
+.filter{
+    display: flex;
+}
+.search-box{
+    margin: 0 5px;
 }
