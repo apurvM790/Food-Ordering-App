@@ -3,6 +3,7 @@
 
 import RestaurantCardComponent from "./RestaurantCardComponent"
 import { useState, useEffect }  from "react";
+import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
 const BodyComponent = ()=>{
@@ -62,7 +63,7 @@ const BodyComponent = ()=>{
             <div className="res-container">
                 {
                     // for loop is not valid 
-                    filteredListOfRestaurants.map(restaurant => <RestaurantCardComponent key={restaurant.info.id} resData={restaurant}/>)
+                    filteredListOfRestaurants.map(restaurant => <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCardComponent  resData={restaurant}/> </Link>)
                 }
             </div>
 

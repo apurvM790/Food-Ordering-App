@@ -19,10 +19,10 @@ const HeaderComponent = ()=>{
                 </div>
                 <div className="nav-items">
                     <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About Us</Link></li>
-                        <li><Link to="contact">Contact Us</Link></li>
-                        <li><Link to="/cart">Cart</Link></li>
+                        <li><Link className="link" to="/">Home</Link></li>
+                        <li><Link className="link" to="/about">About Us</Link></li>
+                        <li><Link className="link" to="contact">Contact Us</Link></li>
+                        <li><Link className="link" to="/cart">Cart</Link></li>
                         <button className="btn-Name" onClick={()=>{
                                 if(btnName==="LogIn"){
                                     
@@ -31,7 +31,7 @@ const HeaderComponent = ()=>{
                                     setBtnName("LogIn")
                                 }
                             }
-                        }><Link to="/login">{btnName}</Link></button>
+                        }><Link className="link" to="/login">{btnName}</Link></button>
                     </ul>
 
                 </div>
