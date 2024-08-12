@@ -25,7 +25,7 @@ const RestaurantMenu = ()=>{
 
     const {name, cuisines, costForTwoMessage, avgRatingString, areaName, totalRatingsString} = resMenu?.cards[2]?.card?.card?.info;
     // console.log(resMenu.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
-    const  resCards = resMenu.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards;
+    const  resCards = resMenu.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards;
 
     console.log(resCards);
     if(resCards === undefined) return <Shimmer/>
