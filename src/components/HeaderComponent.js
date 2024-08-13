@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import exampleImage  from "../img/Logo.png";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const HeaderComponent = ()=>{
     const [btnName, setBtnName] = useState("LogIn");
@@ -13,17 +14,22 @@ const HeaderComponent = ()=>{
         console.log("useEffect");
     },[btnName]);
 
-    return ( <div className="header">
-                <div className="logo-container">
-                    <img className="logo" src={exampleImage} alt="Logo"/>
+    const onlineStatus = useOnlineStatus();
+    
+
+    return ( <div className=" flex justify-between bg-lime-200 shadow-xl rounded-lg shadow-slate-400">
+                <div className="w-28  ">
+                    <img className="transform transition-all hover:scale-90 rounded-2xl shadow-lg bg-red-400" src={exampleImage} alt="Logo"/>
                 </div>
-                <div className="nav-items">
-                    <ul>
-                        <li><Link className="link" to="/">Home</Link></li>
-                        <li><Link className="link" to="/about">About Us</Link></li>
-                        <li><Link className="link" to="contact">Contact Us</Link></li>
-                        <li><Link className="link" to="/cart">Cart</Link></li>
-                        <button className="btn-Name" onClick={()=>{
+                <div className=" flex  items-center ">
+                    <ul className="flex ">
+                        <li className="px-3 font-semibold ">Online Status: {onlineStatus ? "🟢" : "🔴"  }</li>
+                        <li className="px-3 font-semibold"><Link className="link" to="/">Home</Link></li>
+                        <li className="px-3 font-semibold"><Link className="link" to="/about">About Us</Link></li>
+                        <li className="px-3 font-semibold"><Link className="link" to="contact">Contact Us</Link></li>
+                        <li className="px-3 font-semibold"><Link className="link" to="/cart">Cart</Link></li>
+                        <li className="px-3 font-semibold"><Link to="/Grocery">Grocery</Link></li>
+                        <li className="px-3 font-semibold transform transition-all hover:scale-125  "><button className="text-white border px-1 shadow-xlg bg-pink-300 rounded-lg hover:text-cyan-600 " onClick={()=>{
                                 if(btnName==="LogIn"){
                                     
                                     setBtnName("LogOut");
@@ -31,7 +37,7 @@ const HeaderComponent = ()=>{
                                     setBtnName("LogIn")
                                 }
                             }
-                        }><Link className="link" to="/login">{btnName}</Link></button>
+                        }><Link className="link" to="/login">{btnName}</Link></button></li>
                     </ul>
 
                 </div>
