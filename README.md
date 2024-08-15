@@ -188,3 +188,52 @@ it follows the single responsibility principle where each and every service has 
 
 - Server Side Routing - you make a call to the about us html page and it will come as a response.
 # <a></a> this will be used for routing to different whole html page.
+
+# higher Order Components :
+- these are the same as normal components only they takes a component as input and also returns a component or modified component.
+
+# controlled and unControlled Components :
+ 
+#controlled - state management done by the parent component, when there is multiple childs and it maintains the state and also pass it to there childrens.
+
+#uncontrolled - state management done by every component for there values. which they need 
+
+
+# State lift up >>> ???
+
+
+# Props Drilling-
+ parent
+    child 
+        child
+            child   
+                child
+                    child
+    
+if we have this type of heirarchy and we have to send data from parent to its leaf child then it goes with multiple props - which cause very burden
+
+- to overCome this problem of props drilling something (contexts which is kind of global space where our data placed and any component can access it)
+
+
+# to over come this props drilling problem we can use (CONTEXTS)
+- in this the data is stored like globally object which can be accessed by any component in the app.
+- for creating context we can use the createContext method from react to create the context.
+- and then we can import it and use it anywhere in the app.
+
+
+- in case of functional component we use (useContext) method to use the context inside any component.
+- in case of class based component we can use (<contextName.consumer> tag) to use it.
+
+# if i want to change the data of that context at the time of authentication then we can do that, by using some api call of authentication when authentication done then we get that data and we have to update our context (UserContext)
+
+- to update it we using 
+    const [userInfo, setUserInfo] = useState();
+
+<UserContext.provider value={{loggedInUser:userInfo}}>
+    in side this tag whatever we wrapped there will be our data will be reached and can be accessed
+    example :
+    <HeaderComponent />
+    then the data only available in header component and no where else.
+</UserContext.provider>
+
+# "build": "parcel build index.html",

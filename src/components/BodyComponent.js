@@ -1,7 +1,7 @@
 // import resObj from "../utils/mockData";
 //  [no longer needed]
 
-import RestaurantCardComponent from "./RestaurantCardComponent"
+import RestaurantCardComponent, { withPromotedCard } from "./RestaurantCardComponent"
 import { useState, useEffect }  from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -18,6 +18,8 @@ const BodyComponent = ()=>{
     // whenever state variable updates, react triggers a reconciliation cycle(re-renders the component)
     // console.log("body rendered");
 
+    const RestaurantPromotedCard = withPromotedCard(RestaurantCardComponent);
+
     useEffect(()=>{
         fetchData();
     },[]);
@@ -32,6 +34,7 @@ const BodyComponent = ()=>{
         setListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
+    console.log(listOfRestaurants);
 
     if(!useOnlineStatus()){
         return <h1>Yupp It's Looks Like, Your Internet Is nOt Working....</h1>
@@ -69,7 +72,10 @@ const BodyComponent = ()=>{
             <div className="flex flex-wrap">
                 {
                     // for loop is not valid 
-                    filteredListOfRestaurants.map(restaurant => <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCardComponent  resData={restaurant}/> </Link>)
+                    filteredListOfRestaurants.map(restaurant => <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>{
+                        (restaurant.info.avgRating >=4.4 ) ?( <RestaurantPromotedCard resData={restaurant}/>) :
+                        (<RestaurantCardComponent  resData={restaurant}/>)
+                        } </Link>)
                 }
             </div>
 

@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent"
 // import RestaurantCardComponent from "./components/RestaurantCardComponent";
@@ -11,6 +11,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
 import BodyComponent from "./components/BodyComponent";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import UserContext from "./UserContext";
 // import Grocery from "./components/Grocery";
 
 /**
@@ -44,17 +45,30 @@ import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 
 const Grocery = lazy(()=>import("./components/Grocery"));
 
+
+// some thing related to authentication of users code written here.
+
+
 const AppLayout = ()=>{
 
-    
+    const [userInfo, setUserInfo] = useState(null);
 
+useEffect(()=>{
+    // after fetching api data we got something:
+    const data = {id:"AS",name:"Ayush Srivastava",};
+    setUserInfo(data.id);
+})
 
-    return <div className="app">
+    return (
+        <UserContext.Provider value={{loggedInUser:userInfo}}>
+            <div className="app">
                 <HeaderComponent />
                 <Outlet />
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
             </div>
+        </ UserContext.Provider>
+        );
 }
 
 const appRouter = createBrowserRouter([
