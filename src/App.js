@@ -11,6 +11,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
 import BodyComponent from "./components/BodyComponent";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./UserContext";
 // import Grocery from "./components/Grocery";
 
@@ -62,7 +63,9 @@ useEffect(()=>{
     return (
         <UserContext.Provider value={{loggedInUser:userInfo}}>
             <div className="app">
-                <HeaderComponent />
+                <UserContext.Provider value={{loggedInUser:"EM"}}>
+                    <HeaderComponent />
+                </UserContext.Provider>
                 <Outlet />
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
@@ -71,46 +74,29 @@ useEffect(()=>{
         );
 }
 
-const appRouter = createBrowserRouter([
-    {
-        path:"/",
-        element: <AppLayout />,
-        children:[
-            {
-                path:"/",
-                element: <BodyComponent />
-            }
-            ,
-            {
-                path:"/about",
-                element:<About />
-            },
-            {
-                path:"/contact",
-                element:<Contact />
-            },
-            {
-                path:"/cart",
-                element:<Cart/>
-            },
-            {
-                path:"/grocery",
-                element:<Suspense fallback={<h1>Loading.....</h1>}><Grocery/></Suspense>
-            },
-            {
-                path:"/restaurants/:resId",
-                element:<RestaurantMenu />
-            }
-        ],
-        errorElement: <Error/>
-    },
-    {
-        path:"/login",
-        element:<Login />
-    },
-]);
+
+const appRouter = (
+    <HashRouter>
+        <Routes>
+            <Route path="/" element={<AppLayout />}>
+                <Route index element={<BodyComponent />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="grocery" element={
+                    <Suspense fallback={<Shimmer />}>
+                        <Grocery />
+                    </Suspense>
+                } />
+                <Route path="restaurants/:resId" element={<RestaurantMenu />} />
+                <Route path="*" element={<Error />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+        </Routes>
+    </HashRouter>
+);
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(<RouterProvider router={appRouter}/>)
+root.render(appRouter);

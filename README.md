@@ -237,3 +237,48 @@ if we have this type of heirarchy and we have to send data from parent to its le
 </UserContext.provider>
 
 # "build": "parcel build index.html",
+
+
+
+# I just changed the BrowserRouter to the hashrouter 
+
+// const appRouter = createBrowserRouter([
+//     {
+//         path:"/",
+//         element: <AppLayout />,
+//         children:[
+//             {
+//                 path:"/",
+//                 element: <BodyComponent />
+//             }
+//             ,
+//             {
+//                 path:"/about",
+//                 element:<About />
+//             },
+//             {
+//                 path:"/contact",
+//                 element:<Contact />
+//             },
+//             {
+//                 path:"/cart",
+//                 element:<Cart/>
+//             },
+//             {
+//                 path:"/grocery",
+//                 element:<Suspense fallback={<h1>Loading.....</h1>}><Grocery/></Suspense>
+//             },
+//             {
+//                 path:"/restaurants/:resId",
+//                 element:<RestaurantMenu />
+//             }
+//         ],
+//         errorElement: <Error/>
+//     },
+//     {
+//         path:"/login",
+//         element:<Login />
+//     },
+// ]);
+
+// root.render(<RouterProvider router={appRouter}/>)

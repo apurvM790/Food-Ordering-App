@@ -8,7 +8,7 @@ export const RestaurantCardComponent = (props)=>{
     const {resData} = props;
     const {name, cuisines, avgRating, sla, costForTwo} = resData.info;
     return (
-        <div className="mx-6 my-6 px-3 py-3 rounded-3xl bg-slate-300 w-[240px] transition-all hover:shadow-lg slate-500">
+        <div className="mx-6 h-[465px] my-6 px-3 py-3 rounded-3xl bg-slate-300 w-[240px] transition-all hover:shadow-lg slate-500">
             <div>
             <img className=" w-[230px] border-2 my-1 rounded-xl shadow-md to-slate-400 transition-all hover:scale-95" alt="res-logo" 
             src={

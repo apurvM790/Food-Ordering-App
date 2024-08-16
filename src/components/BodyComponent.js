@@ -69,7 +69,7 @@ const BodyComponent = ()=>{
                     setListOfRestaurants(filteredList)
                 }}>Top Rated Restaurants</button>
             </div>
-            <div className="flex flex-wrap">
+            <div className=" flex flex-wrap mx-1">
                 {
                     // for loop is not valid 
                     filteredListOfRestaurants.map(restaurant => <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>{

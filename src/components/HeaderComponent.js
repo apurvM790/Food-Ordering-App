@@ -27,7 +27,7 @@ const HeaderComponent = ()=>{
                 </div>
                 <div className=" flex  items-center ">
                     <ul className="flex ">
-                        <li className="px-3 font-semibold ">Online Status: {onlineStatus ? "🟢" : "🔴"  }</li>
+                        <li className="px-3 font-semibold ">Online Status: {onlineStatus ? "🟢" : "🔴"  } </li>
                         <li className="px-3 font-semibold"><Link className="link" to="/">Home</Link></li>
                         <li className="px-3 font-semibold"><Link className="link" to="/about">About Us</Link></li>
                         <li className="px-3 font-semibold"><Link className="link" to="contact">Contact Us</Link></li>
