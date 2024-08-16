@@ -52,25 +52,21 @@ const Grocery = lazy(()=>import("./components/Grocery"));
 
 const AppLayout = ()=>{
 
-    const [userInfo, setUserInfo] = useState(null);
+//     const [userInfo, setUserInfo] = useState(null);
 
-useEffect(()=>{
-    // after fetching api data we got something:
-    const data = {id:"AS",name:"Ayush Srivastava",};
-    setUserInfo(data.id);
-})
+// useEffect(()=>{
+//     // after fetching api data we got something:
+//     const data = {id:"AS",name:"Ayush Srivastava",};
+//     setUserInfo(data.id);
+// })
 
     return (
-        <UserContext.Provider value={{loggedInUser:userInfo}}>
             <div className="app">
-                <UserContext.Provider value={{loggedInUser:"EM"}}>
                     <HeaderComponent />
-                </UserContext.Provider>
                 <Outlet />
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
             </div>
-        </ UserContext.Provider>
         );
 }
 
