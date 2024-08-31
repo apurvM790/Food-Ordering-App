@@ -9,7 +9,7 @@ const RestaurantMenu = ()=>{
     const [showIndex, setShowIndex] = useState(1);
 
     const {resId} = useParams();
-    console.log(resId);
+    // console.log(resId);
 
     useEffect(()=>{
         fetchData();
@@ -19,7 +19,7 @@ const RestaurantMenu = ()=>{
         const val = await fetch(MENU_URL +resId)
 
         const json =await val.json();
-        console.log(json.data);
+        // console.log(json.data);
         setResMenu(json?.data);
     }
 
@@ -29,11 +29,11 @@ const RestaurantMenu = ()=>{
     // console.log(resMenu.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
     const  resCards = resMenu.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(c => (c?.card?.card?.["@type"] ==
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"));
-    console.log(resCards);
+    // console.log(resCards);
 
     // resCards
 
-    console.log(resCards);
+    // console.log(resCards);
     if(resCards === undefined) return <Shimmer/>
 
     

@@ -282,3 +282,11 @@ if we have this type of heirarchy and we have to send data from parent to its le
 // ]);
 
 // root.render(<RouterProvider router={appRouter}/>)
+
+
+
+# Redux Store---
+- npm install @redux/toolkit 
+- npm install react-redux
+
+- then create a configure file for app store.

@@ -1,7 +1,10 @@
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/cartSlice";
 
 const ItemList = (props)=>{
     const menuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
+
+    const dispatch=  useDispatch();
 
     return (
             <div className="">
@@ -22,7 +25,9 @@ const ItemList = (props)=>{
                         </div>
                         </div>
                         <div className="">
-                            <button className="absolute  p-3 rounded-lg shadow-xl bg-white text-green-400 transition-all hover:scale-95 hover:bg-blue-200 hover:text-green-900">Add +</button>
+                            <button className="absolute  p-3 rounded-lg shadow-xl bg-white text-green-400 transition-all hover:scale-95 hover:bg-blue-200 hover:text-green-900" onClick={()=>{
+                                dispatch(addUser(e));
+                            }}>Add +</button>
                             
                             <img className=" w-[150px] h-[150px] rounded-2xl  transition-all hover:scale-95" src={menuImg + e.card.info.imageId}/>
                         </div>

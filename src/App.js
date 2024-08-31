@@ -1,4 +1,4 @@
-import React, {lazy, Suspense, useEffect, useState} from "react";
+import React, {lazy, Suspense, useContext, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent"
 // import RestaurantCardComponent from "./components/RestaurantCardComponent";
@@ -13,6 +13,9 @@ import BodyComponent from "./components/BodyComponent";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import LocationContext from "./LocationContext";
 // import Grocery from "./components/Grocery";
 
 /**
@@ -52,21 +55,20 @@ const Grocery = lazy(()=>import("./components/Grocery"));
 
 const AppLayout = ()=>{
 
-//     const [userInfo, setUserInfo] = useState(null);
-
-// useEffect(()=>{
-//     // after fetching api data we got something:
-//     const data = {id:"AS",name:"Ayush Srivastava",};
-//     setUserInfo(data.id);
-// })
+    const [lattitude, setLattitude] = useState("26.85");
+    const [longitude, setLongitude] = useState("80.9167");
 
     return (
+        <Provider store={appStore}>
+            <LocationContext.Provider value={{lattitude,setLattitude,longitude,setLongitude}}>
             <div className="app">
                     <HeaderComponent />
                 <Outlet />
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
             </div>
+            </LocationContext.Provider>
+            </Provider>
         );
 }
 
