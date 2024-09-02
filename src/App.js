@@ -16,6 +16,7 @@ import UserContext from "./UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import LocationContext from "./LocationContext";
+import Footer from "./components/Footer";
 // import Grocery from "./components/Grocery";
 
 /**
@@ -66,6 +67,7 @@ const AppLayout = ()=>{
                 <Outlet />
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
+                    <Footer />
             </div>
             </LocationContext.Provider>
             </Provider>

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 // import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 import axios from 'axios';
 import LocationContext from "../LocationContext";
+import { FaSearchLocation } from "react-icons/fa";
 
 
 const HeaderComponent = ()=>{
@@ -58,20 +59,20 @@ const HeaderComponent = ()=>{
     // console.log(cartItems);
     
 
-    return ( <div className=" flex justify-between bg-lime-200 shadow-xl rounded-lg shadow-slate-400">
-                <div className="w-28  flex">
-                    <img className="transform transition-all hover:scale-90 rounded-2xl shadow-lg bg-red-400" src={exampleImage} alt="Logo"/>
+    return ( <div className=" flex justify-between bg-white shadow-xl rounded-lg shadow-slate-400">
+                <div className="w-28  flex items-center">
+                    <img className="transform transition-all hover:scale-90 rounded-2xl shadow-lg bg-red-400 shadow-teal-100" src={exampleImage} alt="Logo"/>
                     
-                    <input type="text" placeholder="Enter the city Name...!" value={query} onChange={(e)=>setQuery(e.target.value)} className="mx-4 my-3 p-2 bg-white text-black"/>
-                    <button onClick={handleSearch}>Search</button>
+                    <input type="text" placeholder="Enter city Name...!" value={query} onChange={(e)=>setQuery(e.target.value)} className="mx-4 my-3 p-2 h-12 border-2 rounded-lg border-purple-300 italic shadow-xl shadow-purple-200 bg-white text-black"/>
+                    <button onClick={handleSearch} className="text-black shadow-xl mx-1 transform transition-all hover:scale-110 shadow-teal-200 hover:bg-gradient-to-r  from-cyan-500 to-blue-500 hover:text-white hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-base px-5 py-2.5 flex gap-1 text-center me-2 mb-2 ">Search <FaSearchLocation className="py-1 text-2xl animate-spin"/></button>
                 </div>
                 <div className=" flex  items-center ">
                     <ul className="flex ">
-                        <li className="px-3 font-semibold ">Online Status: {onlineStatus ? "🟢" : "🔴"  } </li>
-                        <li className="px-3 font-semibold"><Link className="link" to="/">Home</Link></li>
-                        <li className="px-3 font-semibold"><Link className="link" to="/cart">Cart[{cartItems.length}]</Link></li>
-                        <li className="px-3 font-semibold"><Link to="/Grocery">Grocery</Link></li>
-                        <li className="px-3 font-semibold transform transition-all hover:scale-125  "><button className="text-white border px-1 shadow-xlg bg-pink-300 rounded-lg hover:text-cyan-600 " onClick={()=>{
+                        <li className="text-black bg-gradient-to-r from-cyan-200 via-cyan-200 to-cyan-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-400 shadow-lg shadow-cyan-300/50 dark:shadow-lg dark:shadow-cyan-500/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">Online Status: {onlineStatus ? "🟢" : "🔴"  } </li>
+                        <li className=" text-black shadow-xl mx-1 transform transition-all hover:scale-110 shadow-teal-200 hover:bg-gradient-to-r  from-cyan-500 to-blue-500 hover:text-white hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2"><Link className="link" to="/">Home</Link></li>
+                        <li className="text-black shadow-xl mx-1 transform transition-all hover:scale-110 shadow-teal-200 hover:bg-gradient-to-r  from-cyan-500 to-blue-500 hover:text-white hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2"><Link className="link" to="/cart">Cart[{cartItems.length}]</Link></li>
+                        <li className="text-black shadow-xl mx-1 transform transition-all hover:scale-110 shadow-teal-200 hover:bg-gradient-to-r  from-cyan-500 to-blue-500 hover:text-white hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2"><Link to="/Grocery">Grocery</Link></li>
+                        <li className="px-3 font-semibold mx-1 transform transition-all hover:scale-110  "><button className="text-white bg-gradient-to-r from-purple-400 via-purple-400 to-purple-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-400 shadow-lg shadow-purple-200/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2" onClick={()=>{
                                 if(btnName==="LogIn"){
                                     
                                     setBtnName("LogOut");

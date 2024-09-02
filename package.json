@@ -1,13 +1,10 @@
 {
-  "homepage": "https://apurvm790.github.io/Food-Ordering-App/",
   "name": "food-ordering-app",
   "version": "1.0.0",
   "description": "This is Namaste React",
   "proxy": "https://www.swiggy.com",
   "scripts": {
     "start": "parcel index.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "parcel build index.html",
     "test": "jest"
   },

@@ -23,8 +23,8 @@ const BodyComponent = ()=>{
     const scrollRef = useRef(null);
     const {lattitude} = useContext(LocationContext);
     const {longitude} = useContext(LocationContext);
-    console.log(lattitude);
-    console.log(longitude);
+    // console.log(lattitude);
+    // console.log(longitude);
     // whenever state variable updates, react triggers a reconciliation cycle(re-renders the component)
     // console.log("body rendered");
 
@@ -38,7 +38,7 @@ const BodyComponent = ()=>{
         const data =await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat="+lattitude+"&lng="+longitude+"&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
         const jsonData =await data.json();
-        console.log(jsonData);
+        // console.log(jsonData);
         setOnMind(jsonData?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
         
         
@@ -46,8 +46,8 @@ const BodyComponent = ()=>{
         setListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
-    console.log(listOfRestaurants);
-    console.log(onMind);
+    // console.log(listOfRestaurants);
+    // console.log(onMind);
 
     if(!useOnlineStatus()){
         return <h1>Yupp It's Looks Like, Your Internet Is nOt Working....</h1>
@@ -74,8 +74,8 @@ const BodyComponent = ()=>{
                 <h1 className="text-2xl font-bold italic mx-14 mt-4">What's on your Mind?</h1>
                 <div className="">
                     <div className="py-2 flex justify-end mx-14">
-                    <button className="text-3xl mx-2 hover:bg-pink-200 hover:rounded-full transition-all hover:scale-110" onClick={scrollLeft}><MdOutlineArrowCircleLeft /></button>
-                    <button className="text-3xl hover:bg-pink-200 hover:rounded-full transition-all hover:scale-110" onClick={scrollRight}><MdOutlineArrowCircleRight /></button>
+                    <button className="text-3xl mx-2 hover:bg-cyan-100 hover:rounded-full transition-all hover:scale-110" onClick={scrollLeft}><MdOutlineArrowCircleLeft /></button>
+                    <button className="text-3xl hover:bg-cyan-100 hover:rounded-full transition-all hover:scale-110" onClick={scrollRight}><MdOutlineArrowCircleRight /></button>
                     </div>
                 <div className="w-11/12  my-2 mb-10 mx-auto  flex overflow-x-auto scroll-smooth hide-scrollbar" ref={scrollRef}>
                     {onMind.map(value => (

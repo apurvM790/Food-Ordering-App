@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
+import EmptyCart from "./EmptyCart";
 
 export const Cart = ()=>{
     const itemsList = useSelector((store)=>store.cart.items);
-    console.log(itemsList);
+    console.log("itemList"+typeof itemsList);
     const menuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
-    return (<div className="w-7/12 left-0 right-0 mx-auto">
+    return !itemsList?<EmptyCart />:(<div className="w-7/12 left-0 right-0 mx-auto">
         <div className="font-bold text-5xl text-purple-400 border-4 rounded-md shadow-xl py-3 my-2 px-3">Cart Items...</div>
         {itemsList.map((e)=>(
                     <div key={e.card.info.id} className="w-[950px] flex  border-4 py-2 my-4 px-2 justify-between items-center hover:bg-slate-300 ">
