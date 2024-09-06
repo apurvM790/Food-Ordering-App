@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, useCallback, useRef } from "react";
-import { useState, useEffect, useContext } from "react";
 import { exampleImage } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -59,9 +58,9 @@ const HeaderComponent = ()=>{
     // console.log(cartItems);
     
 
-    return ( <div className=" flex justify-between bg-white shadow-xl rounded-lg shadow-slate-400">
-                <div className="w-28  flex items-center">
-                    <img className="transform transition-all hover:scale-90 rounded-2xl shadow-lg bg-red-400 shadow-teal-100" src={exampleImage} alt="Logo"/>
+    return ( <div className=" flex justify-between bg-white shadow-xl rounded-lg shadow-slate-400 h-28">
+                <div className=" flex justify-center items-center">
+                    <img className=" size-16 mx-6 transform transition-all hover:scale-90   shadow-teal-100" src={exampleImage} alt="Logo"/>
                     
                     <input type="text" placeholder="Enter city Name...!" value={query} onChange={(e)=>setQuery(e.target.value)} className="mx-4 my-3 p-2 h-12 border-2 rounded-lg border-purple-300 italic shadow-xl shadow-purple-200 bg-white text-black"/>
                     <button onClick={handleSearch} className="text-black shadow-xl mx-1 transform transition-all hover:scale-110 shadow-teal-200 hover:bg-gradient-to-r  from-cyan-500 to-blue-500 hover:text-white hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-base px-5 py-2.5 flex gap-1 text-center me-2 mb-2 ">Search <FaSearchLocation className="py-1 text-2xl animate-spin"/></button>

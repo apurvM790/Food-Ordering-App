@@ -62,12 +62,14 @@ const AppLayout = ()=>{
     return (
         <Provider store={appStore}>
             <LocationContext.Provider value={{lattitude,setLattitude,longitude,setLongitude}}>
-            <div className="app">
+            <div className="flex flex-col min-h-screen">
                     <HeaderComponent />
-                <Outlet />
+                    <div className="flex-grow">
+                    <Outlet />
+                    </div>
                 {/* this Outlet component is used as a component according to the route it to be given. 
                     The Route should be given by the router as a children which being filled according to route.*/}
-                    <Footer />
+                    <Footer  className="mt-auto"/>
             </div>
             </LocationContext.Provider>
             </Provider>

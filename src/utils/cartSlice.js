@@ -11,7 +11,9 @@ const cartSlice =  createSlice({
             state.items.push(action.payload);
         },
         removeUser:(state,action)=>{
-            state.items.pop();
+            console.log(JSON.parse(JSON.stringify(state.items)));
+            state.items = state.items.filter((item)=> item.card.info.id != action.payload);
+            console.log(JSON.parse(JSON.stringify(state.items)));
         },
         clearCart:(state,action)=>{
             state.items.length = 0; // [] create items 
